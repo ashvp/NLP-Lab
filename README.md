@@ -1,4 +1,4 @@
-attention is all you need vs canny edge (only abstracts)
+# attention is all you need vs canny edge (only abstracts)
 ```
 (.venv) PS D:\SNU\Semester 6\NLP\lab> python .\pipeline_max.py
 Loading SPECTER model...
@@ -39,7 +39,7 @@ Final Weights:
 ========================================
 ```
 
-attention is all you need vs attention is all you need *rewrite* (abstracts)
+# attention is all you need vs attention is all you need *rewrite* (abstracts)
 ```
 (.venv) PS D:\SNU\Semester 6\NLP\lab> python .\pipeline_max.py
 Loading SPECTER model...
@@ -80,7 +80,7 @@ Final Weights:
 ========================================
 ```
 
-attention is all you need vs nerf (PDFs)
+# attention is all you need vs nerf (PDFs)
 ```
 (.venv) PS D:\SNU\Semester 6\NLP\lab> python .\pipeline_max.py ".\attention is all you need.pdf" ".\nerf.pdf"
 Loading SPECTER model...
@@ -126,7 +126,7 @@ Verdict: LOW RISK   — likely original
 ==========================================
 ```
 
-attention is all you need vs attention is all you need full *rewrite* (PDFs)
+# attention is all you need vs attention is all you need full *rewrite* (PDFs)
 ```
 (.venv) PS D:\SNU\Semester 6\NLP\lab> python .\pipeline_max.py ".\attention is all you need.pdf" ".\ms.pdf"
 Loading SPECTER model...
