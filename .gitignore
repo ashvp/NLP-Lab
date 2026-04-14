@@ -1,0 +1,7 @@
+attention/
+
+attention_paraphrased/
+
+.venv/
+
+*.exe
