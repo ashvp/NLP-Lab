@@ -1,3 +1,65 @@
+# Academic Plagiarism Detection — NLP Lab
+
+A multi-signal plagiarism detection pipeline for academic papers combining SPECTER embeddings, n-gram alignment, and citation analysis.
+
+---
+
+## 🖥️ Streamlit Web App
+
+A browser-based frontend for the pipeline is available in `app.py`.
+
+### Setup
+
+**1. Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+**2. Compile the C executables** (requires GCC / MinGW on Windows)
+```bash
+gcc -O2 -o preprocessor.exe preprocessor.c
+gcc -O2 -o citation.exe citation.c
+gcc -O2 -o smith_waterby.exe smith_waterby.c
+```
+
+**3. Run the app**
+```bash
+streamlit run app.py
+```
+
+### Features
+- Upload two PDFs **or** paste raw text directly
+- Live risk score gauge with LOW / MEDIUM / HIGH verdict
+- Radar chart and bar chart of all five pipeline components
+- Full score breakdown: S_sem, S_struct, S_align, S_cite, S_common
+- Shows final weight redistribution when no citations are detected
+- Expandable preprocessed text preview and full formula calculation
+
+### Pipeline Components
+
+| Component | Method | Weight |
+|-----------|--------|--------|
+| S_sem — Semantic Similarity | SPECTER [CLS] cosine similarity | α = 0.45 |
+| S_struct — Structural Consistency | Paragraph-level embedding alignment | β = 0.10 |
+| S_align — N-gram Alignment | 6-gram Jaccard overlap | γ = 0.25 |
+| S_cite — Citation Score | C-based citation counter | δ = 0.15 |
+| S_common — Common Knowledge Penalty | Boilerplate phrase similarity | ε = 0.05 |
+
+**Risk Score Formula:**
+```
+R = α·S_sem + β·S_struct + γ·S_align + δ·S_cite − ε·S_common
+```
+
+| Score Range | Verdict |
+|-------------|---------|
+| ≥ 0.65 | 🔴 HIGH RISK — likely plagiarism |
+| 0.45 – 0.65 | 🟡 MEDIUM RISK — review recommended |
+| < 0.45 | 🟢 LOW RISK — likely original |
+
+---
+
+## Experiment Results
+
 # attention is all you need vs canny edge (only abstracts)
 ```
 (.venv) PS D:\SNU\Semester 6\NLP\lab> python .\pipeline_max.py
